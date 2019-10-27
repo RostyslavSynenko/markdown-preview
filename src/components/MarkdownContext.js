@@ -39,8 +39,20 @@ export const MarkdownProvider = props => {
       '![React Logo w/ Text](https://goo.gl/Umyytc)'
   );
 
+  const [editorMaximized, setEditorMaximized] = useState(false);
+  const [previewMaximized, setPreviewMaximized] = useState(false);
+
   return (
-    <MarkdownContext.Provider value={{ markdown, setMarkdown }}>
+    <MarkdownContext.Provider
+      value={{
+        markdown,
+        setMarkdown,
+        editorMaximized,
+        setEditorMaximized,
+        previewMaximized,
+        setPreviewMaximized
+      }}
+    >
       {props.children}
     </MarkdownContext.Provider>
   );

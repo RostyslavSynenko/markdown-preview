@@ -9,7 +9,9 @@
 
 .editor-container .edit-header,
 .preview-container .preview-header {
-  background-color: rgb(50, 160, 160);
+  background: rgb(50, 160, 160) url('./img/edit.svg') no-repeat;
+  background-size: 20px 20px;
+  background-position: 5px 3px;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -18,11 +20,17 @@
 
 .editor-container #editor {
   width: 100%;
-  height: 30vh;
+  min-height: 200px;
   background-color: rgb(197, 230, 231);
   resize: vertical;
+  outline: none;
   border: none;
   margin-bottom: -4px;
+}
+
+.editor-container.maximized #editor {
+  min-height: 95vh;
+  resize: none;
 }
 
 .editor-container .edit-header h1,
@@ -42,10 +50,14 @@
   margin: 3px;
   cursor: pointer;
 }
+.editor-container.maximized .edit-header .open-full,
+.preview-container.maximized .preview-header .open-full {
+  background-image: url('./img/compress-arrows-alt-solid.svg');
+}
 
 .preview-container {
   min-height: 200px;
-  width: 80%;
+  width: 65%;
   margin: 20px auto 25px auto;
   border: 1px solid black;
   box-shadow: 0 0 10px black;
@@ -53,5 +65,14 @@
 }
 
 .preview-container #preview {
-  padding-left: 25px;
+  padding: 0 15px;
+}
+
+pre, code {
+  background-color: white;
+}
+
+.maximized {
+  min-height: 95vh;
+  width: 95%;
 }
