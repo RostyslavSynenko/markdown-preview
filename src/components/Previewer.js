@@ -1,4 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useRef
+} from 'react';
 import { MarkdownContext } from './MarkdownContext';
 import marked from 'marked';
 
@@ -13,25 +17,31 @@ function Previewer() {
     setPreviewMaximized,
     editorMaximized
   } = useContext(MarkdownContext);
+  const editor = useRef();
 
-  const onClick = e => {
+  const handleClick = () => {
     setPreviewMaximized(prevState => !prevState);
   };
 
   useEffect(() => {
-    document.getElementById('preview').innerHTML = marked(markdown);
+    editor.current.innerHTML = marked(markdown);
   }, [markdown]);
 
   return (
     <div
-      className={'preview-container' + (previewMaximized ? ' maximized' : '')}
+      className={`preview-container ${
+        previewMaximized ? 'maximized' : ''
+      }`}
       style={{ display: editorMaximized ? 'none' : '' }}
     >
-      <div className={'preview-header'}>
+      <div className="preview-header">
         <h1>Previewer</h1>
-        <span className={'open-full'} onClick={onClick}></span>
+        <span
+          className="open-full"
+          onClick={handleClick}
+        ></span>
       </div>
-      <div id={'preview'}></div>
+      <div id="preview" ref={editor}></div>
     </div>
   );
 }

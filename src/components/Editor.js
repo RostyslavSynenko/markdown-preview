@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { MarkdownContext } from './MarkdownContext';
 
-function Editor() {
+const Editor = () => {
   const {
     markdown,
     setMarkdown,
@@ -10,28 +10,37 @@ function Editor() {
     previewMaximized
   } = useContext(MarkdownContext);
 
-  const onChange = e => {
-    const { value } = e.target;
+  const handleChange = event => {
+    const { value } = event.target;
 
     setMarkdown(value);
   };
 
-  const onClick = e => {
+  const handleClick = () => {
     setEditorMaximized(prevState => !prevState);
   };
 
   return (
     <div
-      className={'editor-container' + (editorMaximized ? ' maximized' : '')}
+      className={`editor-container ${
+        editorMaximized ? ' maximized' : ''
+      }`}
       style={{ display: previewMaximized ? 'none' : '' }}
     >
-      <div className={'edit-header'}>
+      <div className="edit-header">
         <h1>Editor</h1>
-        <span className={'open-full'} onClick={onClick}></span>
+        <span
+          className="open-full"
+          onClick={handleClick}
+        ></span>
       </div>
-      <textarea id={'editor'} value={markdown} onChange={onChange} />
+      <textarea
+        id="editor"
+        value={markdown}
+        onChange={handleChange}
+      />
     </div>
   );
-}
+};
 
 export default Editor;

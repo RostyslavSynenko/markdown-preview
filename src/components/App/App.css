@@ -9,7 +9,8 @@
 
 .editor-container .edit-header,
 .preview-container .preview-header {
-  background: rgb(50, 160, 160) url('./img/edit.svg') no-repeat;
+  background: rgb(50, 160, 160)
+    url('../../assets/img/edit.svg') no-repeat;
   background-size: 20px 20px;
   background-position: 5px 3px;
   display: flex;
@@ -37,7 +38,7 @@
 .preview-container .preview-header h1 {
   margin: 0;
   padding-left: 30px;
-  font-family: 'Poppins', sans-serif;;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
 }
 
@@ -46,13 +47,13 @@
   display: block;
   height: 17px;
   width: 17px;
-  background-image: url('./img/arrows-alt-solid.svg');
+  background-image: url('../../assets/img/arrows-alt-solid.svg');
   margin: 3px;
   cursor: pointer;
 }
 .editor-container.maximized .edit-header .open-full,
 .preview-container.maximized .preview-header .open-full {
-  background-image: url('./img/compress-arrows-alt-solid.svg');
+  background-image: url('../../assets/img/compress-arrows-alt-solid.svg');
 }
 
 .preview-container {
@@ -68,11 +69,22 @@
   padding: 0 15px;
 }
 
-pre, code {
+pre,
+code {
   background-color: white;
 }
 
 .maximized {
   min-height: 95vh;
   width: 95%;
+}
+
+@media screen and (max-width: 768px) {
+  .editor-container {
+    width: 80%;
+  }
+
+  .preview-container {
+    width: 95%;
+  }
 }
